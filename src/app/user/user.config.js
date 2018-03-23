@@ -1,7 +1,6 @@
 // userRoutes.$inject = ['$stateProvider'];
 
 function userRoutes($stateProvider) {
-  debugger
   $stateProvider
     .state('mydemo.user', {
         url: 'List',
@@ -14,7 +13,6 @@ function userRoutes($stateProvider) {
               require.ensure([], () => {
                 // load whole module
                 let module = require('./user.controller');
-                debugger
                 $ocLazyLoad.load({name: module.default.name});
                 resolve(module.controller);
               });

@@ -1,7 +1,6 @@
 'use strict';
 
 function UserListController(){
-    debugger
 }
 
 export default angular

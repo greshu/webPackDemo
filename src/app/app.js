@@ -1,6 +1,7 @@
 import angular from 'angular';
 import uirouter from 'angular-ui-router';
 import routing from './app.config';
+import oclazyLoad from 'oclazyLoad'
 
 import '../style/app.css';
 
@@ -12,17 +13,16 @@ let app = () => {
   }
 };
 
-class AppCtrl {
-  constructor() {
-    this.url = 'https://github.com/preboot/angular-webpack';
-  }
+function AppCtrl() {
+  // constructor() {
+  // }
 }
 
 const MODULE_NAME = 'app';
 angular.module(MODULE_NAME, [
   'ui.router',
-  // 'user.config'
-    require('oclazyLoad'),
+   "oc.lazyLoad",
+  //  require('oclazyLoad'),
     require('./user/user.config').default.name,
   // "user"
 ])
