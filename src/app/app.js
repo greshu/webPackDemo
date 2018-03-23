@@ -1,10 +1,6 @@
 import angular from 'angular';
 import uirouter from 'angular-ui-router';
-
 import routing from './app.config';
-import user from './user/user.config'
-
-
 
 import '../style/app.css';
 

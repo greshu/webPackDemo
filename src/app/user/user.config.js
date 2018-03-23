@@ -3,11 +3,6 @@
 function userRoutes($stateProvider) {
   debugger
   $stateProvider
-    // .state('mydemo.user', {
-    //   url: 'user',
-    //   abstract: true,
-    //   template:"<div ui-view></div>"
-    // })
     .state('mydemo.user', {
         url: 'List',
         template:  require('./user-list.tmpl.html'),
