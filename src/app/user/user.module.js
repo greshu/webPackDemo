@@ -1,17 +1,10 @@
 
-import userRoutes from "./user.config"
-import UserListController from "./user.controller"
-
-// (function(){
+// import userRoutes from "./user.config"
+// import UserListController from "./user.controller"
 
 
-
-//     angular.module("user", [])
+// angular.module("user", [])
+//     .config(userRoutes)
 //     .controller("UserListController", UserListController);
-// })();
-
-angular.module("user", [])
-    .config(userRoutes)
-    .controller("UserListController", UserListController);
     
    

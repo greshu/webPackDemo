@@ -1,9 +1,8 @@
 import angular from 'angular';
 import uirouter from 'angular-ui-router';
 
-
 import routing from './app.config';
-import user from './user/user.module'
+import user from './user/user.config'
 
 
 
@@ -24,10 +23,13 @@ class AppCtrl {
 }
 
 const MODULE_NAME = 'app';
-
 angular.module(MODULE_NAME, [
   'ui.router',
-  "user"])
+  // 'user.config'
+    require('oclazyLoad'),
+    require('./user/user.config').default.name,
+  // "user"
+])
   .config(routing)
   .directive('app', app)
   .controller('AppCtrl', AppCtrl);
