@@ -1,6 +1,6 @@
 'use strict';
 
-function UserListController(){
+function UserListController(testVar){
 }
 
 export default angular
