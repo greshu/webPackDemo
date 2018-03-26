@@ -22,12 +22,16 @@ function AppCtrl() {
   // }
 }
 
-function appRun($rootScope,  $transitions) {
+function appRun($rootScope,  $transitions, $state) {
   $transitions.onSuccess({}, function(trans) {
     console.log("statechange onSuccess");
    });
    $transitions.onStart({}, function(trans) {
-    console.log("statechange start");
+    //  var stateTo = trans.$to();
+    //   if(stateTo.name == 'mydemo.user.profile'){
+    //     debugger
+    //     $state.go('mydemo.user.list');
+    //   }
    });
 }
 
