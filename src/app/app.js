@@ -2,10 +2,10 @@ import angular from 'angular';
 import uirouter from 'angular-ui-router';
 import oclazyLoad from 'oclazyLoad'
 import routing from './app.config';
-
 // Services
 
 import profileService from './service/profile.service'
+import '../../node_modules/font-awesome/css/font-awesome.css'
 
 import '../style/app.css';
 

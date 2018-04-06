@@ -116,7 +116,7 @@ module.exports = function makeWebpackConfig() {
       // Rename the file using the asset hash
       // Pass along the updated reference to your code
       // You can add here any file extension you want to get copied to your output
-      test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
+      test: /\.(png|jpg|jpeg|gif|woff)$/,
       loader: 'file-loader'
     }, {
       // HTML LOADER
@@ -124,7 +124,17 @@ module.exports = function makeWebpackConfig() {
       // Allow loading html through js
       test: /\.html$/,
       loader: 'raw-loader'
-    }]
+    },
+    {
+      test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+      // Limiting the size of the woff fonts breaks font-awesome ONLY for the extract text plugin 
+      // loader: "url?limit=10000" 
+      loader: "url-loader"
+    },
+    {
+      test: /\.(ttf|eot|svg)(\?[\s\S]+)?$/,
+      loader: 'file-loader'
+    },]
   };
 
   // ISTANBUL LOADER
