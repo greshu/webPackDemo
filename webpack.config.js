@@ -88,6 +88,9 @@ module.exports = function makeWebpackConfig() {
       test: /\.js$/,
       loader: 'babel-loader',
       exclude: /node_modules/
+      // ,query: {
+      //   presets: ["es2015"]
+      // }
     }, {
       // CSS LOADER
       // Reference: https://github.com/webpack/css-loader
