@@ -224,20 +224,19 @@ module.exports = function makeWebpackConfig() {
    * Reference: http://webpack.github.io/docs/configuration.html#devserver
    * Reference: http://webpack.github.io/docs/webpack-dev-server.html
    */
+  config.devServer = {
+    contentBase: './src/public',
+    stats: 'minimal',
+    host: '192.168.1.95'
+  };
 
-  if (isProd) {
-    config.devServer = {
-      contentBase: './dist/',
-      stats: 'minimal',
-      host: '127.0.0.1'
-    };
-  } else {
-    config.devServer = {
-      contentBase: './src/public',
-      stats: 'minimal',
-      host: '192.168.1.95'
-    };
-  }
+  // if (isProd) {
+  //   config.devServer = {
+  //     contentBase: './dist/',
+  //     stats: 'minimal',
+  //     host: '192.168.1.95'
+  //   };
+  // }
 
   return config;
 }();
