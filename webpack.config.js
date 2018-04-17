@@ -14,7 +14,7 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 var ENV = process.env.npm_lifecycle_event;
 var isTest = ENV === 'test' || ENV === 'test-watch';
 var isProd = ENV === 'build';
-
+console.log(ENV + " .................................................");
 module.exports = function makeWebpackConfig() {
   /**
    * Config
@@ -45,7 +45,7 @@ module.exports = function makeWebpackConfig() {
 
     // Output path from the view of the page
     // Uses webpack-dev-server in development
-    publicPath: isProd ? '/' : 'http://127.0.0.1:8080/',
+    publicPath: isProd ? 'http://127.0.0.1:8080/' : '/',
 
     // Filename for entry points
     // Only adds hash in build mode
@@ -105,8 +105,8 @@ module.exports = function makeWebpackConfig() {
       loader: isTest ? 'null-loader' : ExtractTextPlugin.extract({
         fallbackLoader: 'style-loader',
         loader: [
-          {loader: 'css-loader', query: {sourceMap: true}},
-          {loader: 'postcss-loader'}
+          { loader: 'css-loader', query: { sourceMap: true } },
+          { loader: 'postcss-loader' }
         ],
       })
     }, {
@@ -161,8 +161,8 @@ module.exports = function makeWebpackConfig() {
    * Reference: https://github.com/postcss/autoprefixer-core
    * Add vendor prefixes to your css
    */
-   // NOTE: This is now handled in the `postcss.config.js`
-   //       webpack2 has some issues, making the config file necessary
+  // NOTE: This is now handled in the `postcss.config.js`
+  //       webpack2 has some issues, making the config file necessary
 
   /**
    * Plugins
@@ -193,24 +193,20 @@ module.exports = function makeWebpackConfig() {
       // Reference: https://github.com/webpack/extract-text-webpack-plugin
       // Extract css files
       // Disabled when in test mode or not in build mode
-      new ExtractTextPlugin({filename: 'css/[name].css', disable: !isProd, allChunks: true})
+      new ExtractTextPlugin({ filename: 'css/[name].css', disable: !isProd, allChunks: true })
     )
   }
 
   // Add build specific plugins
   if (isProd) {
     config.plugins.push(
-      // Reference: http://webpack.github.io/docs/list-of-plugins.html#noerrorsplugin
-      // Only emit files when there are no errors
-      new webpack.NoErrorsPlugin(),
-
-      // Reference: http://webpack.github.io/docs/list-of-plugins.html#dedupeplugin
-      // Dedupe modules in the output
-      new webpack.optimize.DedupePlugin(),
-
       // Reference: http://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin
       // Minify all javascript, switch loaders to minimizing mode
-      new webpack.optimize.UglifyJsPlugin(),
+      new webpack.optimize.UglifyJsPlugin({
+        //test: /\.js($|\?)/i,
+        //sourceMap: true,
+        mangle: false
+      }),
 
       // Copy assets from the public folder
       // Reference: https://github.com/kevlened/copy-webpack-plugin
@@ -228,7 +224,7 @@ module.exports = function makeWebpackConfig() {
   config.devServer = {
     contentBase: './src/public',
     stats: 'minimal',
-    host: '0.0.0.0'
+    host: '192.168.1.95'
   };
 
   return config;
